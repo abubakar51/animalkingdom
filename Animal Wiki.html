@@ -1,0 +1,289 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Wikipedia</title>
+    <style>
+        /* =====================================
+           Base Styles - Body and Background
+        ===================================== */
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center;
+            background-image: url('background-watermark.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8); /* changed opacity method */
+            animation: fadeInBody 1.5s ease-in;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* =====================================
+           Navbar Styles
+        ===================================== */
+        nav.navbar {
+            background-color: #2e7d32;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            color: white;
+            flex-wrap: wrap;
+            animation: slideDown 1s ease;
+        }
+		.logo {
+    font-weight: bold;
+    font-size: 24px; /* you can also slightly increase the size if you want */
+}
+
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links li a:hover {
+            color: #c8e6c9;
+            transform: scale(1.1);
+        }
+
+        .nav-auth a {
+            background-color: white;
+            color: #2e7d32;
+            padding: 8px 12px;
+            margin-left: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-auth a:hover {
+            background-color: #c8e6c9;
+            transform: scale(1.05);
+        }
+
+        /* =====================================
+           Search Area Styles
+        ===================================== */
+        .search-container { 
+            margin: 30px; 
+            position: relative; 
+            display: inline-block; 
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        input { 
+            padding: 12px; 
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease;
+        }
+        input:focus {
+            box-shadow: 0 0 8px #2e7d32;
+            outline: none;
+        }
+
+        button { 
+            padding: 12px; 
+            cursor: pointer; 
+            border: none;
+            background-color: #2e7d32;
+            color: white;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #1b5e20;
+            transform: scale(1.05);
+        }
+
+        .suggestions { 
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            width: 300px;
+            max-height: 150px;
+            overflow-y: auto;
+            text-align: left;
+            top: 50px;
+            left: 0;
+            z-index: 1000;
+            border-radius: 5px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .suggestions div { 
+            padding: 8px; 
+            cursor: pointer; 
+            transition: background 0.2s ease;
+        }
+        .suggestions div:hover { 
+            background: #f0f0f0; 
+        }
+
+        /* =====================================
+           Animal Info Display
+        ===================================== */
+        .animal-info { 
+            margin-top: 20px; 
+            animation: fadeInInfo 1s ease;
+        }
+
+        @keyframes fadeInInfo {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animal-img { 
+            width: 250px; 
+            height: auto; 
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .animal-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* =====================================
+           Watermark
+        ===================================== */
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.2;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            pointer-events: none;
+            animation: fadeIn 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Animal Health Management System</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="animal-wiki.html">Animal Wikipedia</a></li>
+                <li><a href="vets.html">Vets</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="visit-form.html">Visit Form</a></li>
+                <li><a href="about.html">About Clinic</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <h1>Animal Wikipedia</h1>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for an animal..." onkeyup="showSuggestions()">
+        <button onclick="searchAnimal()">Search</button>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+    <div class="animal-info" id="info"></div>
+    <div class="watermark">Animal Health Management System</div>
+
+    <script>
+        const animals = {
+            "Lion": { "desc": "The lion is a species in the family Felidae and a member of the genus Panthera.", "img": "lion.jpg" },
+            "Tiger": { "desc": "The tiger is the largest living cat species and a member of the genus Panthera.", "img": "tiger.jpg" },
+            "Elephant": { "desc": "Elephants are large mammals of the family Elephantidae and the order Proboscidea.", "img": "elephant.jpg" },
+            "Giraffe": { "desc": "The giraffe is an African artiodactyl mammal, the tallest living terrestrial animal.", "img": "giraffe.jpg" },
+            "Zebra": { "desc": "Zebras are African equines with distinctive black-and-white striped coats.", "img": "zebra.jpg" },
+            "Kangaroo": { "desc": "Kangaroos are marsupials from the family Macropodidae native to Australia.", "img": "kangaroo.jpg" },
+            "Panda": { "desc": "The giant panda, native to China, is a bear species known for its distinctive black and white fur.", "img": "panda.jpg" },
+            "Penguin": { "desc": "Penguins are a group of aquatic flightless birds living mostly in the Southern Hemisphere.", "img": "penguin.jpg" },
+            "Dolphin": { "desc": "Dolphins are highly intelligent marine mammals belonging to the family Delphinidae.", "img": "dolphin.jpg" },
+            "Cheetah": { "desc": "The cheetah is a large cat native to Africa and central Iran, known for its incredible speed.", "img": "cheetah.jpg" },
+            "Wolf": { "desc": "Wolves are large canines native to North America and Eurasia, known for their pack behavior.", "img": "wolf.jpg" },
+            "Bald Eagle": { "desc": "The bald eagle is a bird of prey found in North America, and it is the national bird of the USA.", "img": "bald_eagle.jpg" },
+            "Polar Bear": { "desc": "Polar bears are large carnivorous bears native to the Arctic, known for their white fur.", "img": "polar_bear.jpg" },
+            "Crocodile": { "desc": "Crocodiles are large semiaquatic reptiles that live in tropical regions of Africa, Asia, the Americas, and Australia.", "img": "crocodile.jpg" },
+            "Dog": { "desc": "Dogs are domesticated mammals, known as loyal companions and bred in a variety of breeds.", "img": "dog.jpg" },
+            "Cat": { "desc": "Cats are small, carnivorous mammals that are often kept as pets and known for their independent nature.", "img": "cat.jpg" },
+            "Rabbit": { "desc": "Rabbits are small mammals in the family Leporidae, often kept as pets or farm animals.", "img": "rabbit.jpg" },
+            "Parrot": { "desc": "Parrots are colorful birds known for their ability to mimic sounds and human speech.", "img": "parrot.jpg" },
+            "Goldfish": { "desc": "Goldfish are small freshwater fish commonly kept in aquariums as pets.", "img": "goldfish.jpg" },
+            "Horse": { "desc": "Horses are large domesticated mammals used for riding, farming, and sports.", "img": "horse.jpg" },
+            "Hamster": { "desc": "Hamsters are small rodents often kept as pets due to their playful nature.", "img": "hamster.jpg" },
+            "Guinea Pig": { "desc": "Guinea pigs are small, social rodents commonly kept as pets.", "img": "GuineaPig.jpg" },
+            "Turtle": { "desc": "Turtles are reptiles known for their protective shells and slow movement.", "img": "turtle.jpg" },
+            "Snake": { "desc": "Snakes are legless reptiles found in many environments worldwide, some being kept as exotic pets.", "img": "snake.jpg" },
+            "Cow": { "desc": "Cows are domesticated mammals commonly raised for milk, meat, and agricultural work, known for their gentle nature.", "img": "Cow.jpg" }
+        };
+
+        function searchAnimal() {
+            let query = document.getElementById('search').value.toLowerCase();
+            let infoDiv = document.getElementById('info');
+            let found = false;
+            for (let animal in animals) {
+                if (animal.toLowerCase() === query) {
+                    infoDiv.innerHTML = `<h2>${animal}</h2><p>${animals[animal].desc}</p><img src="${animals[animal].img}" alt="${animal}" class="animal-img">`;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                infoDiv.innerHTML = "<p>Animal not found.</p>";
+            }
+        }
+
+        function showSuggestions() {
+            let input = document.getElementById('search').value.toLowerCase();
+            let suggestionsDiv = document.getElementById('suggestions');
+            suggestionsDiv.innerHTML = '';
+            if (input.length > 0) {
+                Object.keys(animals).forEach(animal => {
+                    if (animal.toLowerCase().startsWith(input)) {
+                        let suggestionItem = document.createElement('div');
+                        suggestionItem.textContent = animal;
+                        suggestionItem.onclick = function() {
+                            document.getElementById('search').value = animal;
+                            suggestionsDiv.innerHTML = '';
+                        };
+                        suggestionsDiv.appendChild(suggestionItem);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Wikipedia</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center;
+            background-image: url('background-watermark.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            opacity: 0.9;
+			
+		.watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('LogoPet.jpg'); /* Ensure this file exists */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;	
+        }
+        .search-container { 
+            margin: 20px; 
+            position: relative; 
+            display: inline-block; 
+        }
+        input { padding: 10px; width: 300px; }
+        button { padding: 10px; cursor: pointer; }
+        .animal-info { margin-top: 20px; }
+        .suggestions { 
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            width: 300px;
+            max-height: 150px;
+            overflow-y: auto;
+            text-align: left;
+            top: 40px;
+            left: 0;
+            z-index: 1000;
+        }
+        .suggestions div { padding: 5px; cursor: pointer; }
+        .suggestions div:hover { background: #f0f0f0; }
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.2;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            pointer-events: none;
+        }
+        .animal-img { width: 200px; height: auto; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Animal Wikipedia</h1>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for an animal..." onkeyup="showSuggestions()">
+        <button onclick="searchAnimal()">Search</button>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+    <div class="animal-info" id="info"></div>
+    <div class="watermark"></div>
+
+    <script>
+        const animals = {
+            "Lion": "The lion is a species in the family Felidae and a member of the genus Panthera.",
+            "Tiger": "The tiger is the largest living cat species and a member of the genus Panthera.",
+            "Elephant": "Elephants are large mammals of the family Elephantidae and the order Proboscidea.",
+            "Giraffe": "The giraffe is an African artiodactyl mammal, the tallest living terrestrial animal.",
+            "Zebra": "Zebras are African equines with distinctive black-and-white striped coats.",
+            "Kangaroo": "Kangaroos are marsupials from the family Macropodidae native to Australia.",
+            "Panda": "The giant panda, native to China, is a bear species known for its distinctive black and white fur.",
+            "Penguin": "Penguins are a group of aquatic flightless birds living mostly in the Southern Hemisphere.",
+            "Dolphin": "Dolphins are highly intelligent marine mammals belonging to the family Delphinidae.",
+            "Cheetah": "The cheetah is a large cat native to Africa and central Iran, known for its incredible speed.",
+            "Wolf": "Wolves are large canines native to North America and Eurasia, known for their pack behavior.",
+            "Bald Eagle": "The bald eagle is a bird of prey found in North America, and it is the national bird of the USA.",
+            "Polar Bear": "Polar bears are large carnivorous bears native to the Arctic, known for their white fur.",
+            "Crocodile": "Crocodiles are large semiaquatic reptiles that live in tropical regions of Africa, Asia, the Americas, and Australia.",
+            "Dog": "Dogs are domesticated mammals, known as loyal companions and bred in a variety of breeds.",
+            "Cat": "Cats are small, carnivorous mammals that are often kept as pets and known for their independent nature.",
+            "Rabbit": "Rabbits are small mammals in the family Leporidae, often kept as pets or farm animals.",
+            "Parrot": "Parrots are colorful birds known for their ability to mimic sounds and human speech.",
+            "Goldfish": "Goldfish are small freshwater fish commonly kept in aquariums as pets.",
+            "Horse": "Horses are large domesticated mammals used for riding, farming, and sports.",
+            "Hamster": "Hamsters are small rodents often kept as pets due to their playful nature.",
+            "Guinea Pig": "Guinea pigs are small, social rodents commonly kept as pets.",
+            "Turtle": "Turtles are reptiles known for their protective shells and slow movement.",
+            "Snake": "Snakes are legless reptiles found in many environments worldwide, some being kept as exotic pets."
+        };
+        
+        function searchAnimal() {
+            let query = document.getElementById('search').value;
+            let infoDiv = document.getElementById('info');
+            if (animals[query]) {
+                infoDiv.innerHTML = `<h2>${query}</h2><p>${animals[query].desc}</p>`;
+                infoDiv.innerHTML += `<img src="${animals[query].img}" alt="${query}" class="animal-img">`;
+            } else {
+                infoDiv.innerHTML = "<p>Animal not found.</p>";
+            }
+        }
+
+        function showSuggestions() {
+            let input = document.getElementById('search').value.toLowerCase();
+            let suggestionsDiv = document.getElementById('suggestions');
+            suggestionsDiv.innerHTML = '';
+            if (input.length > 0) {
+                Object.keys(animals).forEach(animal => {
+                    if (animal.toLowerCase().startsWith(input)) {
+                        let suggestionItem = document.createElement('div');
+                        suggestionItem.textContent = animal;
+                        suggestionItem.onclick = function() {
+                            document.getElementById('search').value = animal;
+                            suggestionsDiv.innerHTML = '';
+                        };
+                        suggestionsDiv.appendChild(suggestionItem);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

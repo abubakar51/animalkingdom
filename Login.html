@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Animal Health Management System</title>
+    <style>
+	:root {
+            --primary-green: #2e7d32;
+            --light-green: #c8e6c9;
+            --background: #f0fdf4;
+            --text-dark: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--primary-green);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            color: white;
+            animation: slideInTop 1s ease-out forwards;
+        }
+
+        @keyframes slideInTop {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-auth a {
+            background-color: white;
+            color: var(--primary-green);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-left: 0.5rem;
+            transition: 0.3s ease-in-out;
+        }
+
+        .nav-auth a:hover {
+            background-color: var(--light-green);
+        }
+	
+	
+	
+	
+	
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4CAF50, #81C784);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .login-box h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+	<nav class="navbar">
+    <div class="logo">Animal Health Management</div>
+    <ul class="nav-links">
+      <li><a href="Animal Kingdom Website.html">Home</a></li>
+      <li><a href="animal-wikipedia.html">Animal Wikipedia</a></li>
+      <li><a href="vets.html">Vets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="career.html">Career</a></li>
+      <li><a href="visit-form.html">Visit Form</a></li>
+      <li><a href="about.html">About Clinic</a></li>
+    </ul>
+    <div class="nav-auth">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form>
+            <input type="email" placeholder="Email" required><br>
+            <input type="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+            <a href="register.html">Don't have an account? Register</a>
+        </form>
+    </div>
+</body>
+</html>

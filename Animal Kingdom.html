@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animal Owner Form</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.navbar {
+      background-color: #2e7d32;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links li a:hover {
+      color: #c8e6c9;
+    }
+
+    .nav-auth a {
+      background-color: white;
+      color: #2e7d32;
+      padding: 8px 12px;
+      margin-left: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .nav-auth a:hover {
+      background-color: #c8e6c9;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 30px 40px;
+      background-color: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      max-width: 120px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .title {
+      font-size: 28px;
+      color: #00796B;
+      font-weight: bold;
+    }
+
+    .serial-number {
+      text-align: right;
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+      color: #333;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fafafa;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #00796B;
+      background-color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .buttons button {
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #00796B;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #004d40;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+    }
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #info, #info * {
+        visibility: visible;
+    }
+    #info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+	
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Animal Health Management</div>
+    <ul class="nav-links">
+       <li><a href="Animal Kingdom Website.html">Home</a></li>
+            <li><a href="Animal Wiki.html">Animal Wikipedia</a></li>
+            <li><a href="#vets">Vets</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="Animal Kingdom.html">Visit Form</a></li>
+            <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-auth">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <img class="logo" src="LogoPet.jpg" alt="Animal Kingdom Logo" />
+      <div class="title">Animal Owner Information Form</div>
+    </header>
+
+    <div class="serial-number">Serial Number: 001</div>
+
+    <form>
+      <div class="form-group">
+        <label for="owner-name">Owner Name:</label>
+        <input type="text" id="owner-name" name="owner-name" placeholder="Enter full name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Current residential address" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contact-no">Contact Number:</label>
+        <input type="text" id="contact-no" name="contact-no" placeholder="e.g., +8801XXXXXXXXX" required />
+      </div>
+
+      <div class="form-group">
+        <label for="symptoms">Symptoms/Complaints:</label>
+        <textarea id="symptoms" name="symptoms" rows="5" placeholder="Describe symptoms of your animal..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="patient-species">Animal Species:</label>
+        <select id="patient-species" name="patient-species" required>
+          <option value="" disabled selected>Select species</option>
+          <optgroup label="Livestock">
+            <option value="cow">Cow</option>
+            <option value="goat">Goat</option>
+            <option value="sheep">Sheep</option>
+            <option value="pig">Pig</option>
+            <option value="horse">Horse</option>
+          </optgroup>
+          <optgroup label="Poultry">
+            <option value="deshi-chicken">Deshi Chicken</option>
+            <option value="broiler">Broiler</option>
+            <option value="sonali">Sonali</option>
+            <option value="layer">Layer</option>
+            <option value="duck">Duck</option>
+            <option value="pigeon">Pigeon</option>
+          </optgroup>
+          <optgroup label="Pets & Others">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="birds">Birds</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="vet">Select Veterinarian:</label>
+        <select id="vet" name="vet" required>
+          <option value="" disabled selected>Select a vet</option>
+          <option value="dr-rahman">Dr. Rahman - Large Animal Specialist</option>
+          <option value="dr-kabir">Dr. Kabir - Poultry Expert</option>
+          <option value="dr-samira">Dr. Samira - Pet Care Specialist</option>
+          <option value="dr-farzana">Dr. Farzana - Avian Specialist</option>
+          <option value="dr-ahmed">Dr. Ahmed - General Veterinary Care</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button type="button" onclick="window.print()">🖨️ Print</button>
+        <button type="submit">📤 Submit</button>
+      </div>
+    </form>
+
+    <footer>
+      &copy; 2025 Animal Kingdom Health Center. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
